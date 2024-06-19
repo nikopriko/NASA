@@ -1,0 +1,36 @@
+# Use the official Nginx image as a base image
+FROM nginx:alpine
+
+# Copy the static website files to the Nginx HTML directory
+COPY . /usr/share/nginx/html
+
+# Expose port 80 to the outside world
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
+
+
+# .dockerignore
+# Create a .dockerignore file in the root directory to prevent unnecessary files from being copied into the Docker image:
+
+# Dockerfile
+# .dockerignore
+# Build and Run the Docker Container
+# Follow these steps to build and run the Docker container:
+
+# Open a terminal and navigate to your project directory.
+
+# Build the Docker image:
+
+# docker build -t deesdaycare .
+# Run the Docker container:
+
+# docker run -d -p 8080:80 deesdaycare
+# Your static website should now be accessible at http://localhost:8080.
+
+# Explanation
+# FROM nginx:alpine: Uses the official Nginx image based on Alpine Linux, which is lightweight.
+# COPY . /usr/share/nginx/html: Copies all the files from your current directory (where index.html and styles.css are located) to the Nginx HTML directory.
+# EXPOSE 80: Exposes port 80, which is the default port that Nginx listens to.
+# CMD ["nginx", "-g", "daemon off;"]: Starts Nginx in the foreground (daemon off) to keep the container running.
